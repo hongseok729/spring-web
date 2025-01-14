@@ -1,0 +1,104 @@
+/* sidebar.css */
+
+/* 사이드바 스타일 */
+.sidebar {
+    width: 80px;
+    height: 100vh; /* 화면 전체 높이 */
+    background-color: #003366;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: width 0.3s ease;
+    overflow: hidden;
+    z-index: 10000;
+}
+
+.sidebar.open {
+    width: 250px; /* 확장된 사이드바 너비 */
+}
+
+.sidebar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    width: 100%; /* 사이드바 너비에 맞춤 */
+    height: 100%; /* 전체 높이 사용 */
+}
+
+/* 아이콘 위치를 절대 고정 */
+.sidebar ul li {
+    position: relative; /* 부모 요소를 기준으로 절대 위치 설정 */
+    width: 100%; /* li의 너비를 사이드바 너비에 맞춤 */
+    display: flex;
+    align-items: center; /* 세로축 중앙 정렬 */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* 각 아이콘의 고정 위치 */
+.sidebar ul li:nth-child(1) {
+    top: 100px; /* 첫 번째 아이콘 위치 */
+}
+
+.sidebar ul li:nth-child(2) {
+    top: 160px; /* 두 번째 아이콘 위치 */
+}
+
+.sidebar ul li:nth-child(3) {
+    top: 220px; /* 세 번째 아이콘 위치 */
+}
+
+.sidebar ul li:nth-child(4) {
+    top: 280px; /* 네 번째 아이콘 위치 */
+}
+
+/* 아이콘 위치 설정 */
+.sidebar ul li i {
+    font-size: 24px;
+    position: absolute; /* 부모 요소를 기준으로 위치 설정 */
+    left: 200% !important; /* 오른쪽으로 이동 후 강제로 적용 */
+    transform: translateX(-50%) !important; /* 가로 중앙 정렬 유지 */
+}
+
+/* 텍스트 위치 설정 */
+.sidebar ul li .text {
+    display: none; /* 기본적으로 텍스트 숨김 */
+    font-size: 16px;
+    white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+    position: absolute;
+    left: 60px; /* 텍스트가 아이콘 오른쪽에 위치 */
+}
+
+/* 사이드바 펼쳤을 때 텍스트만 표시 */
+.sidebar.open ul li .text {
+    display: inline-block; /* 텍스트 표시 */
+}
+
+.toggle-btn {
+    font-size: 24px;
+    color: #fff;
+    background: none;
+    border: none;
+    position: absolute;
+    top: 15px; /* 햄버거 메뉴 상단 위치 */
+    left: 22px;
+    cursor: pointer;
+    z-index: 100; /* 사이드바 위에 표시 */
+}
+
+/* 사이드바가 열렸을 때 헤더와 메인 콘텐츠 이동 */
+.sidebar.open ~ .header {
+    left: 250px; /* 헤더의 left 속성 변경 */
+}
+
+.sidebar.open ~ .container {
+    margin-left: 250px; /* 메인 콘텐츠의 margin-left 변경 */
+}
+
+/* 메인 컨텐츠 초기 상태 */
+.container {
+    margin-left: 80px; /* 초기 사이드바 너비 */
+    transition: margin-left 0.3s ease;
+}

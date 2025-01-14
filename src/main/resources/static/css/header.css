@@ -1,0 +1,47 @@
+/* header.css */
+
+/* 헤더 스타일 */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #003366;
+    color: #fff;
+    padding: 10px 20px;
+    height: 60px;
+    position: fixed;
+    top: 0;
+    left: 80px; /* 초기 사이드바 너비 */
+    right: 0;
+    z-index: 20; /* 사이드바보다 높게 설정하여 항상 위에 표시 */
+    box-sizing: border-box;
+    overflow: hidden;
+    transition: left 0.3s ease; /* 좌측 이동 시 부드러운 전환 효과 */
+}
+
+.greeting {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.greeting img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.btn-outline-light {
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 5px 10px;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-outline-light:hover {
+    background-color: #fff;
+    color: #003366;
+}

@@ -1,0 +1,78 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <!-- CSS 파일 참조 -->
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/sidebar.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <!-- Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js" defer></script>
+</head>
+<body>
+<!-- 사이드바 -->
+<div th:replace="~{fragments/sidebar :: sidebar}" id="sidebar"></div>
+
+<!-- 헤더 -->
+<div th:replace="~{fragments/header :: header}" class="header"></div>
+
+<!-- 메인 콘텐츠 -->
+<div class="container">
+    <div class="main-content">
+        <h1>메인 페이지</h1>
+        <div class="slider" id="slider">
+            <!-- 슬라이드 이미지 -->
+            <img th:src="@{/images/police_1.png}" alt="슬라이드 1">
+            <img th:src="@{/images/police_2.png}" alt="슬라이드 2" style="display: none;">
+            <img th:src="@{/images/police_3.png}" alt="슬라이드 3" style="display: none;">
+
+            <!-- 좌우 버튼 -->
+            <div class="slider-buttons">
+                <i class="fas fa-chevron-left" onclick="prevSlide()" aria-label="이전 슬라이드"></i>
+                <i class="fas fa-chevron-right" onclick="nextSlide()" aria-label="다음 슬라이드"></i>
+            </div>
+
+            <!-- 슬라이드 인디케이터 -->
+            <div class="slider-indicator">
+                <span class="indicator" onclick="goToSlide(0)"></span>
+                <span class="indicator" onclick="goToSlide(1)"></span>
+                <span class="indicator" onclick="goToSlide(2)"></span>
+            </div>
+        </div>
+
+        <!-- 게시판과 공지사항 -->
+        <div class="info-box">
+            <div class="box" id="board-box">
+                <h3>게시판</h3>
+                <ul>
+                    <li><a href="#">게시판 항목 1</a></li>
+                    <li><a href="#">게시판 항목 2</a></li>
+                    <li><a href="#">게시판 항목 3</a></li>
+                    <li><a href="#">게시판 항목 4</a></li>
+                </ul>
+            </div>
+            <div class="box" id="notice-box">
+                <h3>공지사항</h3>
+                <ul>
+                    <li><a href="#">공지사항 항목 1</a></li>
+                    <li><a href="#">공지사항 항목 2</a></li>
+                    <li><a href="#">공지사항 항목 3</a></li>
+                    <li><a href="#">공지사항 항목 4</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 푸터 -->
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<!-- JavaScript -->
+<script src="/js/sidebar.js"></script>
+<script src="/js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<!-- header.html -->
+<div th:fragment="header" class="header" id="header">
+    <!-- 로고와 텍스트 -->
+    <span class="greeting">
+        <img th:src="@{/images/kt.png}" alt="KT 로고">
+        <span>오늘 하루도 화이팅하세요!</span>
+    </span>
+    <!-- 로그인 버튼 -->
+    <a href="/login" class="btn-outline-light">로그인</a>
+</div>
