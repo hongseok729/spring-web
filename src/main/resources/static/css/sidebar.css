@@ -60,6 +60,21 @@
     font-size: 24px;
     z-index: 101; /* 클릭 가능하도록 z-index 조정 */
     pointer-events: auto; /* 클릭 가능 */
+    padding: 10px; /* 클릭 영역 확장 */
+    border-radius: 50%; /* 원형 배경을 위한 둥근 모서리 */
+    transition: background-color 0.3s ease, color 0.3s ease; /* 부드러운 전환 효과 */
+    cursor: pointer; /* 포인터 커서 표시 */
+}
+
+/* 아이콘 호버 효과 */
+.sidebar ul li i:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* 호버 시 배경색 변경 */
+}
+
+/* 활성화된 아이콘 스타일 */
+.sidebar ul li i.active {
+    background-color: #007BFF; /* 활성화 시 원형 배경색 */
+    color: #fff; /* 활성화 시 아이콘 색상 */
 }
 
 /* 텍스트 스타일 */
@@ -97,12 +112,12 @@
             opacity 0.3s ease-in-out; /* 부드러운 애니메이션 */
     z-index: 100; /* 다른 요소 위에 표시 */
 }
+
 /* 서브메뉴 활성화 */
 .sidebar ul li.active {
     margin-bottom: 100px; /* 서브메뉴 높이만큼 아래 여백 추가 */
 }
 
-/* 서브메뉴 활성화 */
 .sidebar ul li.active .sub-menu {
     height: auto; /* 내용에 맞게 자동 높이 */
     opacity: 1; /* 완전히 보이도록 설정 */
@@ -129,9 +144,6 @@
     text-decoration: underline; /* 호버 시 밑줄 표시 */
 }
 
-
-
-
 /* toggle 버튼 스타일 */
 .toggle-btn {
     font-size: 24px;
@@ -145,6 +157,12 @@
     z-index: 102; /* 알림 아이콘보다 위에 표시 */
 }
 
+.toggle-btn:hover,
+.toggle-btn:focus {
+    background-color: rgba(255, 255, 255, 0.1); /* 호버 및 포커스 시 배경색 변경 */
+    border-radius: 50%; /* 호버 시 원형 배경 적용 */
+}
+
 /* 사이드바가 열렸을 때 헤더와 메인 콘텐츠 이동 */
 .sidebar.open ~ .header {
     left: 200px; /* 헤더의 left 속성 변경 */
@@ -152,4 +170,45 @@
 
 .sidebar.open ~ .container {
     margin-left: 200px; /* 메인 콘텐츠의 margin-left 변경 */
+}
+
+/* 링크의 기본 색상 설정 */
+.sidebar a {
+    color: #fff; /* 흰색 */
+    text-decoration: none;
+}
+
+/* 방문한 링크의 색상을 기본 링크와 동일하게 설정 */
+.sidebar a:visited {
+    color: #fff; /* 흰색 */
+}
+
+/* 호버 시 스타일 */
+.sidebar a:hover {
+    color: #007bff; /* 파란색 또는 원하는 색상 */
+    text-decoration: underline; /* 밑줄 추가 (선택 사항) */
+}
+
+/* 활성화된 링크의 스타일 (선택 사항) */
+.sidebar a.active {
+    color: #f0ad4e; /* 활성화된 링크의 색상 (원하는 색상으로 변경 가능) */
+}
+
+/* 홈 버튼 스타일 */
+.sidebar .menu-link {
+    display: flex;
+    align-items: center; /* 아이콘과 텍스트 수직 정렬 */
+    gap: 15px; /* 아이콘과 텍스트 간격 */
+    text-decoration: none; /* 링크 밑줄 제거 */
+    color: #fff; /* 텍스트 색상 */
+}
+
+/* 텍스트 스타일 */
+.sidebar .text {
+    font-size: 16px;
+}
+
+/* 호버 및 포커스 효과 */
+.sidebar ul li:hover {
+    background-color: #004080;
 }
