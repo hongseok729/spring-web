@@ -47,28 +47,18 @@
         <!-- 게시판과 공지사항 -->
         <div class="info-box">
             <div class="box" id="board-box">
-                <h3>게시판</h3>
+                <!-- 이쁘게 꾸민 게시판 바로가기 버튼 -->
+                <a href="/board/list" class="btn-primary">게시판 바로가기</a>
                 <ul>
-                    <li><a href="/index2">게시판 항목 1</a></li>
-                    <li><a href="/index2">게시판 항목 2</a></li>
-                    <li><a href="/index2">게시판 항목 3</a></li>
-                    <li><a href="/index2">게시판 항목 4</a></li>
-                </ul>
-            </div>
-            <div class="box" id="notice-box">
-                <h3>공지사항</h3>
-                <ul>
-                    <li><a href="/index2">공지사항 항목 1</a></li>
-                    <li><a href="/index2">공지사항 항목 2</a></li>
-                    <li><a href="/index2">공지사항 항목 3</a></li>
-                    <li><a href="/index2">공지사항 항목 4</a></li>
+                    <li><a href="/board/list">게시판 항목 1</a></li>
+                    <li><a href="/board/list">게시판 항목 2</a></li>
                 </ul>
             </div>
         </div>
-    </div>
-</div>
 
-<!-- 푸터 -->
+
+
+        <!-- 푸터 -->
 <div th:replace="~{fragments/footer :: footer}"></div>
 
 <!-- JavaScript -->

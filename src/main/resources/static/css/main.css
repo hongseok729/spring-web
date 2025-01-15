@@ -90,6 +90,7 @@ body {
     transform: scale(1.2); /* 활성화 시 크기 증가 */
 }
 
+/* 게시판과 공지사항 박스 스타일 개선 */
 .info-box {
     display: flex; /* Flexbox를 사용하여 가로 정렬 */
     justify-content: space-between; /* 두 박스 사이에 공간 분배 */
@@ -98,39 +99,89 @@ body {
 }
 
 .info-box .box {
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    background: linear-gradient(145deg, #ffffff, #e6e6e6); /* 부드러운 그라데이션 */
+    border-radius: 15px; /* 더 둥근 모서리 */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* 더 부드러운 그림자 */
+    padding: 30px;
     flex: 1; /* 동일한 너비로 설정 */
     text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s; /* 호버 효과 추가 */
+}
+
+.info-box .box:hover {
+    transform: translateY(-5px); /* 살짝 올라오는 효과 */
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 강조 */
 }
 
 .info-box .box h3 {
     margin: 0 0 15px;
-    font-size: 24px;
-    color: #333;
+    font-size: 28px; /* 글씨 크기 키움 */
+    font-weight: bold; /* 글씨 두껍게 */
+    color: #333; /* 진한 회색 */
+    letter-spacing: 1px; /* 글자 간격 */
+    text-transform: uppercase; /* 대문자 변환 */
+    border-bottom: 2px solid #007bff; /* 하단에 포인트 라인 */
+    display: inline-block; /* 라인과 내용 간격 조정 */
+    padding-bottom: 5px; /* 아래 여백 */
 }
 
 .info-box .box ul {
     list-style: none;
-    margin: 0;
+    margin: 20px 0 0; /* 위쪽 여백 추가 */
     padding: 0;
 }
 
 .info-box .box ul li {
-    margin-bottom: 8px;
+    margin-bottom: 12px; /* 항목 간격 확대 */
+    font-size: 18px; /* 글씨 크기 키움 */
+    font-weight: 500; /* 약간 두껍게 */
+    color: #002244;
+    transition: color 0.3s, transform 0.2s; /* 부드러운 전환 효과 */
 }
 
 .info-box .box ul li a {
     text-decoration: none;
-    color: #555;
-    transition: color 0.3s;
+    color: #002244; /* 링크 기본 색상 */
+    font-weight: bold;
+    transition: color 0.3s ease;
 }
 
 .info-box .box ul li a:hover {
-    color: #007bff;
+    color: #001122; /* 호버 시 색상 진하게 */
+    text-decoration: underline; /* 호버 시 밑줄 추가 */
+    transform: scale(1.05); /* 살짝 확대 */
 }
+
+
+/* 기본 버튼 스타일 */
+.btn-primary {
+    display: inline-block;
+    background: linear-gradient(135deg, #002244, #002244); /* 그라데이션 배경 */
+    color: white; /* 글씨 색상 */
+    text-decoration: none; /* 밑줄 제거 */
+    font-size: 18px; /* 글씨 크기 */
+    font-weight: bold; /* 글씨 두껍게 */
+    padding: 12px 20px; /* 내부 여백 */
+    border-radius: 8px; /* 둥근 모서리 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* 부드러운 효과 */
+    text-align: center;
+    cursor: pointer;
+}
+
+/* 호버 효과 */
+.btn-primary:hover {
+    background: linear-gradient(135deg, #0056b3, #003f7f); /* 어두운 그라데이션 */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 그림자 강화 */
+    transform: translateY(-2px); /* 살짝 올라오는 효과 */
+}
+
+/* 활성 상태 */
+.btn-primary:active {
+    transform: translateY(2px); /* 클릭 시 살짝 눌리는 효과 */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); /* 그림자 약화 */
+}
+
 
 
 

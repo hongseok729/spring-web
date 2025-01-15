@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>게시판 리스트</title>
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/sidebar.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/board.css}">
+    <!-- Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js" defer></script>
+    <script th:src="@{/js/sidebar.js}" defer></script>
+</head>
+<body>
+<!-- 사이드바 -->
+<div th:replace="~{fragments/sidebar :: sidebar}"></div>
+
+<!-- 헤더 -->
+<div th:replace="~{fragments/header :: header}"></div>
+
+<!-- 메인 콘텐츠 -->
+<div class="container" style="margin-left: 200px; margin-top: 60px;">
+    <div class="main-content">
+        <h1>게시판</h1>
+        <a th:href="@{/board/detail}" class="btn">새 글 작성</a>
+        <table>
+            <thead>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성일</th>
+                <th>상태</th>
+                <th>관리</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="board : ${boards}">
+                <td th:text="${board.boardId}"></td>
+                <td>
+                    <a th:href="@{'/boards/' + ${board.boardId}}" th:text="${board.title}"></a>
+                </td>
+                <td th:text="${board.createdAt}"></td>
+                <td th:text="${board.status}"></td>
+                <td>
+                    <a th:href="@{'/boards/edit/' + ${board.boardId}}" class="btn">수정</a>
+                    <a th:href="@{'/boards/delete/' + ${board.boardId}}" class="btn">삭제</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- 푸터 -->
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

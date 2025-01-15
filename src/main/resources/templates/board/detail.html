@@ -1,0 +1,20 @@
+<body>
+<div class="container">
+    <h1 th:text="${board.boardId != null ? board.title : '새 글 작성'}"></h1>
+    <form th:action="@{/boards/save}" method="post">
+        <input type="hidden" th:if="${board.boardId != null}" th:value="${board.boardId}" name="boardId">
+        <div>
+            <label for="title">제목</label>
+            <input type="text" id="title" name="title" th:value="${board.title}">
+        </div>
+        <div>
+            <label for="content">내용</label>
+            <textarea id="content" name="content" th:text="${board.content}"></textarea>
+        </div>
+        <div>
+            <button type="submit" class="btn">저장</button>
+        </div>
+    </form>
+    <a href="/boards" class="btn">목록으로</a>
+</div>
+</body>
