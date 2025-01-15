@@ -15,67 +15,124 @@
 }
 
 .sidebar.open {
-    width: 250px; /* 확장된 사이드바 너비 */
+    width: 200px; /* 확장된 사이드바 너비 */
 }
 
 .sidebar ul {
     list-style: none;
     margin: 0;
     padding: 0;
-    position: relative;
     width: 100%; /* 사이드바 너비에 맞춤 */
     height: 100%; /* 전체 높이 사용 */
+    position: relative;
 }
 
-/* 아이콘 위치를 절대 고정 */
+/* 아이콘과 텍스트를 Flexbox로 정렬 (가로 방향) */
 .sidebar ul li {
-    position: relative; /* 부모 요소를 기준으로 절대 위치 설정 */
     width: 100%; /* li의 너비를 사이드바 너비에 맞춤 */
     display: flex;
     align-items: center; /* 세로축 중앙 정렬 */
+    gap: 15px; /* 아이콘과 텍스트 간의 간격 */
+    padding: 10px 30px; /* 위아래 10px, 좌우 30px 패딩 */
     cursor: pointer;
     transition: background-color 0.3s ease;
+    position: relative; /* 필요 시 다른 요소와의 상대적 위치 조정 */
 }
 
-/* 각 아이콘의 고정 위치 */
+.sidebar ul li:hover,
+.sidebar ul li:focus-within {
+    background-color: #004080; /* 호버 및 포커스 시 배경색 변경 */
+}
+
+/* 각 아이콘의 고정 위치 (수직 위치) */
 .sidebar ul li:nth-child(1) {
-    top: 100px; /* 첫 번째 아이콘 위치 */
+    margin-top: 100px; /* 첫 번째 아이콘 위치 */
 }
 
-.sidebar ul li:nth-child(2) {
-    top: 160px; /* 두 번째 아이콘 위치 */
-}
-
-.sidebar ul li:nth-child(3) {
-    top: 220px; /* 세 번째 아이콘 위치 */
-}
-
+.sidebar ul li:nth-child(2),
+.sidebar ul li:nth-child(3),
 .sidebar ul li:nth-child(4) {
-    top: 280px; /* 네 번째 아이콘 위치 */
+    margin-top: 60px; /* 두 번째, 세 번째, 네 번째 아이콘 위치 */
 }
 
-/* 아이콘 위치 설정 */
+/* 아이콘 스타일 */
 .sidebar ul li i {
     font-size: 24px;
-    position: absolute; /* 부모 요소를 기준으로 위치 설정 */
-    left: 200% !important; /* 오른쪽으로 이동 후 강제로 적용 */
-    transform: translateX(-50%) !important; /* 가로 중앙 정렬 유지 */
+    z-index: 101; /* 클릭 가능하도록 z-index 조정 */
+    pointer-events: auto; /* 클릭 가능 */
 }
 
-/* 텍스트 위치 설정 */
+/* 텍스트 스타일 */
 .sidebar ul li .text {
     display: none; /* 기본적으로 텍스트 숨김 */
     font-size: 16px;
     white-space: nowrap; /* 텍스트 줄바꿈 방지 */
-    position: absolute;
-    left: 60px; /* 텍스트가 아이콘 오른쪽에 위치 */
 }
 
-/* 사이드바 펼쳤을 때 텍스트만 표시 */
 .sidebar.open ul li .text {
     display: inline-block; /* 텍스트 표시 */
 }
 
+/* 서브메뉴 스타일 */
+.sidebar ul li {
+    position: relative; /* 부모 li를 기준으로 서브메뉴 위치를 조정 */
+}
+
+.sidebar ul li .sub-menu {
+    list-style: none;
+    height: 0; /* 기본 높이 0 */
+    padding: 0; /* 초기 패딩 제거 */
+    position: absolute; /* 부모 요소를 기준으로 위치 */
+    left: 0; /* 부모 요소의 왼쪽에 맞춤 */
+    top: 100%; /* 부모 텍스트 바로 아래에 배치 */
+    width: 100%; /* 부모 li의 너비에 맞춤 */
+    background-color: #002244; /* 서브메뉴 배경색 */
+    border-radius: 5px; /* 모서리를 둥글게 */
+    overflow: hidden; /* 넘치는 내용 숨김 */
+    opacity: 0; /* 투명도 0으로 숨김 */
+    transform: scaleY(0); /* Y축으로 축소된 상태로 시작 */
+    transform-origin: top; /* 위쪽을 기준으로 확장 */
+    transition:
+            transform 0.3s ease-in-out,
+            opacity 0.3s ease-in-out; /* 부드러운 애니메이션 */
+    z-index: 100; /* 다른 요소 위에 표시 */
+}
+/* 서브메뉴 활성화 */
+.sidebar ul li.active {
+    margin-bottom: 100px; /* 서브메뉴 높이만큼 아래 여백 추가 */
+}
+
+/* 서브메뉴 활성화 */
+.sidebar ul li.active .sub-menu {
+    height: auto; /* 내용에 맞게 자동 높이 */
+    opacity: 1; /* 완전히 보이도록 설정 */
+    transform: scaleY(1); /* Y축으로 확장 */
+}
+
+/* 서브메뉴 항목 스타일 */
+.sidebar ul li .sub-menu li {
+    padding: 10px 15px; /* 텍스트 상하 간격 */
+    margin: 0; /* 항목 간 간격 제거 */
+}
+
+/* 서브메뉴 항목 텍스트 */
+.sidebar ul li .sub-menu li a {
+    text-decoration: none; /* 밑줄 제거 */
+    color: #fff; /* 텍스트 색상 */
+    font-size: 14px; /* 텍스트 크기 */
+    display: block; /* 블록 요소로 설정 */
+    padding: 0; /* 텍스트 내부 여백 제거 */
+}
+
+/* 서브메뉴 항목 호버 효과 */
+.sidebar ul li .sub-menu li a:hover {
+    text-decoration: underline; /* 호버 시 밑줄 표시 */
+}
+
+
+
+
+/* toggle 버튼 스타일 */
 .toggle-btn {
     font-size: 24px;
     color: #fff;
@@ -85,20 +142,14 @@
     top: 15px; /* 햄버거 메뉴 상단 위치 */
     left: 22px;
     cursor: pointer;
-    z-index: 100; /* 사이드바 위에 표시 */
+    z-index: 102; /* 알림 아이콘보다 위에 표시 */
 }
 
 /* 사이드바가 열렸을 때 헤더와 메인 콘텐츠 이동 */
 .sidebar.open ~ .header {
-    left: 250px; /* 헤더의 left 속성 변경 */
+    left: 200px; /* 헤더의 left 속성 변경 */
 }
 
 .sidebar.open ~ .container {
-    margin-left: 250px; /* 메인 콘텐츠의 margin-left 변경 */
-}
-
-/* 메인 컨텐츠 초기 상태 */
-.container {
-    margin-left: 80px; /* 초기 사이드바 너비 */
-    transition: margin-left 0.3s ease;
+    margin-left: 200px; /* 메인 콘텐츠의 margin-left 변경 */
 }

@@ -1,5 +1,11 @@
 /* header.css */
 
+/* CSS 변수 정의 (선택 사항) */
+:root {
+    --greeting-gap: 30px;
+    --greeting-margin-left: 20px;
+}
+
 /* 헤더 스타일 */
 .header {
     display: flex;
@@ -22,12 +28,13 @@
 .greeting {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: var(--greeting-gap); /* 아이콘과 텍스트 간의 간격 */
+    margin-left: var(--greeting-margin-left); /* 전체 `.greeting`을 우측으로 이동 */
 }
 
 .greeting img {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 34px;
     object-fit: contain;
 }
 

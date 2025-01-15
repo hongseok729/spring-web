@@ -1,22 +1,33 @@
-<!-- sidebar.html -->
 <div th:fragment="sidebar" class="sidebar" id="sidebar">
     <button id="toggleBtn" class="toggle-btn" aria-label="사이드바 토글">☰</button>
     <ul>
         <li>
-            <i class="fas fa-home"></i>
+            <i class="fas fa-home" aria-hidden="true"></i>
             <span class="text">홈</span>
         </li>
-        <li>
-            <i class="fas fa-bell"></i>
-            <span class="text">알림</span>
+        <li class="menu-item">
+            <i class="fas fa-bell notification-icon" aria-hidden="true"></i>
+            <span class="text notification-text">알림</span>
+            <ul class="sub-menu">
+                <li><a href="#">알림1</a></li>
+                <li><a href="#">알림2</a></li>
+            </ul>
         </li>
-        <li>
-            <i class="fas fa-clipboard"></i>
-            <span class="text">게시판</span>
+        <li class="menu-item">
+            <i class="fas fa-clipboard" aria-hidden="true"></i>
+            <span class="text board-text">게시판</span>
+            <ul class="sub-menu">
+                <li><a href="#">게시판1</a></li>
+                <li><a href="#">게시판2</a></li>
+            </ul>
         </li>
-        <li>
-            <i class="fas fa-exclamation-circle"></i>
-            <span class="text">공지사항</span>
+        <li class="menu-item">
+            <i class="fas fa-exclamation-circle" aria-hidden="true"></i>
+            <span class="text notice-text">공지사항</span>
+            <ul class="sub-menu">
+                <li><a href="#">공지사항1</a></li>
+                <li><a href="#">공지사항2</a></li>
+            </ul>
         </li>
     </ul>
 </div>
