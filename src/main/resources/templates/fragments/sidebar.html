@@ -11,8 +11,12 @@
             <i class="fas fa-bell notification-icon" aria-hidden="true" tabindex="0" role="button" aria-label="알림"></i>
             <span class="text notification-text">알림</span>
             <ul class="sub-menu">
-                <li><a href="/index2">알림1</a></li>
-                <li><a href="/index2">알림2</a></li>
+                <li><a href="/index2.html">광주광역시 범죄현황</a></li>
+                <li><a href="/region/gwang.html">광산구</a></li>
+                <li><a href="/region/buk.html">북구</a></li>
+                <li><a href="/region/seo.html">서구</a></li>
+                <li><a href="/region/dong.html">동구</a></li>
+                <li><a href="/region/nam.html">남구</a></li>
             </ul>
         </li>
         <li class="menu-item">
@@ -27,8 +31,8 @@
             <i class="fas fa-exclamation-circle" aria-hidden="true" tabindex="0" role="button" aria-label="공지사항"></i>
             <span class="text notice-text">공지사항</span>
             <ul class="sub-menu">
-                <li><a href="/index2">공지사항1</a></li>
-                <li><a href="/index2">공지사항2</a></li>
+                <li><a th:href="@{/notice_board/boards}">공지사항1</a></li>
+                <li><a th:href="@{/notice_board/boards}">공지사항2</a></li>
             </ul>
         </li>
     </ul>

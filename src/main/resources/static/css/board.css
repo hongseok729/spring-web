@@ -56,3 +56,12 @@ th {
     border: 1px solid #ddd;
     border-radius: 4px;
 }
+
+.alert {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #d4edda;
+    background-color: #d4edda;
+    color: #155724;
+    border-radius: 5px;
+}

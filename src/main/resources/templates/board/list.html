@@ -21,6 +21,12 @@
 <div class="container" style="margin-left: 200px; margin-top: 60px;">
     <div class="main-content">
         <h1>게시판</h1>
+
+        <!-- 알림 메시지 영역 -->
+        <div th:if="${message}" class="alert alert-success">
+            <p th:text="${message}"></p>
+        </div>
+
         <a th:href="@{/board/detail}" class="btn">새 글 작성</a>
         <table>
             <thead>

@@ -1,20 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>게시물 작성</title>
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/sidebar.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/detail.css}">
+    <!-- Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js" defer></script>
+</head>
 <body>
+<!-- 사이드바 -->
+<div th:replace="~{fragments/sidebar :: sidebar}"></div>
+
+<!-- 헤더 -->
+<div th:replace="~{fragments/header :: header}"></div>
+
+<!-- 메인 콘텐츠 -->
 <div class="container">
-    <h1 th:text="${board.boardId != null ? board.title : '새 글 작성'}"></h1>
-    <form th:action="@{/boards/save}" method="post">
-        <input type="hidden" th:if="${board.boardId != null}" th:value="${board.boardId}" name="boardId">
-        <div>
+    <h1>사건 보고서</h1>
+    <form action="/board/save" method="post" enctype="multipart/form-data" class="write-form">
+    <!-- 제목 입력 -->
+        <div class="form-group">
             <label for="title">제목</label>
-            <input type="text" id="title" name="title" th:value="${board.title}">
+            <input type="text" id="title" name="title" placeholder="제목을 입력하세요" required>
         </div>
-        <div>
+        <!-- 내용 입력 -->
+        <div class="form-group">
             <label for="content">내용</label>
-            <textarea id="content" name="content" th:text="${board.content}"></textarea>
+            <textarea id="content" name="content" placeholder="글을 작성해주세요" required></textarea>
         </div>
-        <div>
-            <button type="submit" class="btn">저장</button>
+        <!-- 파일 첨부 -->
+        <div class="form-group">
+            <label for="file">첨부 파일</label>
+            <label for="file" class="file-input">
+                <input type="file" id="file" name="file" multiple onchange="updateFileName()">
+                <i class="fas fa-image"></i> 파일 선택
+            </label>
+            <!-- 선택된 파일명 표시 -->
+            <div id="file-name" class="file-name">선택된 파일이 없습니다.</div>
+        </div>
+
+        <!-- 버튼 그룹 -->
+        <div class="button-group">
+            <button type="submit" class="btn-primary">등록</button>
         </div>
     </form>
-    <a href="/boards" class="btn">목록으로</a>
 </div>
+
+<!-- 푸터 -->
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<!-- JavaScript 추가 -->
+<script th:src="@{/js/detail.js}" defer></script>
 </body>
+</html>

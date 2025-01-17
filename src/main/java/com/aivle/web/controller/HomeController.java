@@ -17,9 +17,5 @@ public class HomeController {
         return "index2"; // templates/index2.html 반환
     }
 
-    @GetMapping("/detail")
-    public String index3() {
-        return "board/detail"; // templates/index2.html 반환
-    }
 
 }

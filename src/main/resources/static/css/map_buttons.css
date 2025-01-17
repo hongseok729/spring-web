@@ -1,0 +1,99 @@
+/* 전체 페이지 중앙 정렬 */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* 화면 전체 높이 */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* 상단부터 정렬 */
+    align-items: center;
+    box-sizing: border-box; /* 패딩과 보더를 포함한 크기 계산 */
+}
+
+/* 모든 요소에 box-sizing 적용 */
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+/* 제목 스타일 */
+.title {
+    font-size: 2.5em; /* 적당한 글씨 크기 */
+    color: #000000; /* 검은색 */
+    font-weight: bold; /* 굵게 */
+    margin-top: 100px; /* 제목을 아래로 이동 */
+    text-align: center; /* 중앙 정렬 */
+    position: relative; /* 제목을 컨테이너 흐름 안에 둠 */
+    z-index: 10; /* 맵 위에 위치하도록 설정 */
+}
+
+/* 컨테이너 스타일 */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* 메인 콘텐츠 스타일 */
+.main-content {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* 위쪽부터 시작 */
+}
+
+/* 맵 컨테이너 위치 조정 */
+.map-container {
+    position: relative;
+    width: 80%; /* 화면 너비의 80% */
+    max-width: 1200px; /* 최대 너비 */
+    aspect-ratio: 4 / 3; /* 가로 세로 비율 */
+    overflow: hidden;
+    margin-left: 20%; /* 맵을 오른쪽으로 이동 */
+    margin-top: 0; /* 위쪽 간격 */
+}
+
+/* 맵 이미지 */
+.map-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* 비율 유지하며 크기 조정 */
+    display: block;
+}
+
+/* SVG 영역 스타일 */
+.region {
+    cursor: pointer;
+    stroke: black;
+    stroke-width: 2px;
+    transition: transform 0.3s, filter 0.3s, opacity 0.3s;
+    transform-origin: center center;
+    filter: drop-shadow(3px 3px 5px rgba(0, 0, 0, 0.5));
+}
+
+.region:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(6px 6px 10px rgba(0, 0, 0, 0.7));
+    stroke-width: 3px;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 600px) {
+    .map-container {
+        width: 100%;
+        aspect-ratio: 1 / 1; /* 정사각형에 가까운 비율 */
+    }
+
+    .region:hover {
+        transform: scale(1.03);
+    }
+}
+
+
