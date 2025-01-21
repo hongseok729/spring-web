@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>광주광역시 CCTV 지도</title>
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/sidebar.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/google_map.css}">
+    <!-- Google Maps API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBe8yGUEAzf3rrlE2PJ8zs68mYkwNLmlyE"></script>
+    <!-- Custom JavaScript -->
+    <script src="/js/google_map.js" defer></script>
+    <script src="/js/sidebar.js"></script>
+</head>
+
+<body>
+<!-- 사이드바 -->
+<div th:replace="~{fragments/sidebar2 :: sidebar}" id="sidebar"></div>
+
+<!-- 헤더 -->
+<div th:replace="~{fragments/header :: header}" class="header"></div>
+
+<!-- 지도 콘텐츠 -->
+<div class="container">
+    <div class="main-content">
+        <h1>광주광역시 CCTV 지도</h1>
+
+        <!-- 구 선택 -->
+        <div class="select-container">
+            <label for="region-select">구 선택:</label>
+            <select id="region-select" onchange="loadCCTVData()">
+                <option value="광산구">광산구</option>
+                <option value="남구">남구</option>
+                <option value="서구">서구</option>
+                <option value="북구">북구</option>
+                <option value="동구">동구</option>
+            </select>
+        </div>
+
+        <!-- 지도 영역 -->
+        <div id="map"></div>
+    </div>
+</div>
+
+<!-- 푸터 -->
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+
+</html>
