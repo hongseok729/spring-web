@@ -19,7 +19,7 @@
 
 <body>
 <!-- 사이드바 -->
-<div th:replace="~{fragments/sidebar :: sidebar}" id="sidebar"></div>
+<div th:replace="~{fragments/sidebar2 :: sidebar}" id="sidebar"></div>
 
 <!-- 헤더 -->
 <div th:replace="~{fragments/header :: header}" class="header"></div>
@@ -101,12 +101,13 @@
             <label for="stationName">관서명:</label>
             <input type="text" id="stationName" name="stationName" readonly>
 
-            <label for="photo">사진 업로드 </label>
+            <label for="photo">사진 업로드</label>
             <div class="file-input-container">
+                <button type="button" id="fileSelectButton">파일 선택</button>
+                <span id="fileLabelText">선택된 파일 없음</span>
                 <input type="file" id="photo" name="photo" accept="image/*" multiple>
-                <div id="fileCount" class="file-count">선택된 파일 없음</div>
-                <ul id="fileList" class="file-list"></ul>
             </div>
+            <ul id="fileList" class="file-list"></ul>
 
             <label for="message">내용 작성:</label>
             <textarea id="message" name="message" rows="4" required></textarea>
@@ -115,6 +116,8 @@
         </form>
     </div>
 </div>
+
+
 
 <!-- JavaScript -->
 <script src="/js/sidebar.js"></script>

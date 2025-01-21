@@ -1,9 +1,9 @@
-/* sidebar.css */
-
-/* 사이드바 스타일 */
+/* ---------------------------------------- */
+/* 공통 사이드바 스타일 (.sidebar)          */
+/* ---------------------------------------- */
 .sidebar {
     width: 80px;
-    height: 100vh; /* 화면 전체 높이 */
+    height: 100vh;
     background-color: #003366;
     color: #fff;
     position: fixed;
@@ -14,201 +14,191 @@
     z-index: 10000;
 }
 
-.sidebar.open {
-    width: 200px; /* 확장된 사이드바 너비 */
+/* 첫 번째 메뉴 - 100px 간격(공통) */
+.sidebar ul li:nth-child(1) {
+    margin-top: 100px;
 }
 
+/* 두 번째 ~ 여섯 번째 메뉴 - 30px 간격(공통) */
+.sidebar ul li:nth-child(2),
+.sidebar ul li:nth-child(3),
+.sidebar ul li:nth-child(4),
+.sidebar ul li:nth-child(5),
+.sidebar ul li:nth-child(6) {
+    margin-top: 30px;
+}
+
+/* 사이드바가 열렸을 때 너비 확장 (공통) */
+.sidebar.open {
+    width: 250px;
+    overflow-x: hidden; /* 수평 스크롤 감춤 */
+    overflow-y: auto;   /* 세로 스크롤 활성화 */
+}
+
+/* 기본 UL 스타일 (공통) */
 .sidebar ul {
     list-style: none;
     margin: 0;
     padding: 0;
-    width: 100%; /* 사이드바 너비에 맞춤 */
-    height: 100%; /* 전체 높이 사용 */
+    width: 100%;
+    height: 100%;
     position: relative;
 }
 
-/* 아이콘과 텍스트를 Flexbox로 정렬 (가로 방향) */
+/* 메인 메뉴(li) 스타일 (공통) */
 .sidebar ul li {
-    width: 100%; /* li의 너비를 사이드바 너비에 맞춤 */
-    display: flex;
-    align-items: center; /* 세로축 중앙 정렬 */
-    gap: 15px; /* 아이콘과 텍스트 간의 간격 */
-    padding: 10px 30px; /* 위아래 10px, 좌우 30px 패딩 */
+    width: 100%;
+    display: block;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    position: relative; /* 필요 시 다른 요소와의 상대적 위치 조정 */
+    position: relative;
 }
 
+/* 호버/포커스 시 (공통) */
 .sidebar ul li:hover,
 .sidebar ul li:focus-within {
-    background-color: #004080; /* 호버 및 포커스 시 배경색 변경 */
+    background-color: transparent;
 }
 
-/* 각 아이콘의 고정 위치 (수직 위치) */
-.sidebar ul li:nth-child(1) {
-    margin-top: 100px; /* 첫 번째 아이콘 위치 */
+/* 메뉴 버튼 (공통) */
+.menu-item > a.menu-link {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 30px;
+    text-decoration: none;
+    color: #fff;
+    transition: background-color 0.3s ease;
+    min-height: 45px;
 }
 
-.sidebar ul li:nth-child(2),
-.sidebar ul li:nth-child(3),
-.sidebar ul li:nth-child(4) {
-    margin-top: 60px; /* 두 번째, 세 번째, 네 번째 아이콘 위치 */
-}
-
-/* 아이콘 스타일 */
+/* 아이콘 스타일 (공통) */
 .sidebar ul li i {
     font-size: 24px;
-    z-index: 101; /* 클릭 가능하도록 z-index 조정 */
-    pointer-events: auto; /* 클릭 가능 */
-    padding: 10px; /* 클릭 영역 확장 */
-    border-radius: 50%; /* 원형 배경을 위한 둥근 모서리 */
-    transition: background-color 0.3s ease, color 0.3s ease; /* 부드러운 전환 효과 */
-    cursor: pointer; /* 포인터 커서 표시 */
+    z-index: 101;
+    pointer-events: auto;
+    border-radius: 50%;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
 }
 
-/* 아이콘 호버 효과 */
 .sidebar ul li i:hover {
-    background-color: rgba(255, 255, 255, 0.1); /* 호버 시 배경색 변경 */
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* 활성화된 아이콘 스타일 */
 .sidebar ul li i.active {
-    background-color: #007BFF; /* 활성화 시 원형 배경색 */
-    color: #fff; /* 활성화 시 아이콘 색상 */
+    background-color: #007BFF;
+    color: #fff;
 }
 
-/* 텍스트 스타일 */
+/* 텍스트 스타일 (공통) */
 .sidebar ul li .text {
-    display: none; /* 기본적으로 텍스트 숨김 */
+    display: none;
     font-size: 16px;
-    white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+    white-space: nowrap;
 }
 
 .sidebar.open ul li .text {
-    display: inline-block; /* 텍스트 표시 */
+    display: inline-block;
 }
 
-/* 서브메뉴 스타일 */
-.sidebar ul li {
-    position: relative; /* 부모 li를 기준으로 서브메뉴 위치를 조정 */
-}
-
+/* 서브메뉴 (공통) */
 .sidebar ul li .sub-menu {
-    list-style: none;
-    height: 0; /* 기본 높이 0 */
-    padding: 0; /* 초기 패딩 제거 */
-    position: absolute; /* 부모 요소를 기준으로 위치 */
-    left: 0; /* 부모 요소의 왼쪽에 맞춤 */
-    top: 100%; /* 부모 텍스트 바로 아래에 배치 */
-    width: 100%; /* 부모 li의 너비에 맞춤 */
-    background-color: #002244; /* 서브메뉴 배경색 */
-    border-radius: 5px; /* 모서리를 둥글게 */
-    overflow: hidden; /* 넘치는 내용 숨김 */
-    opacity: 0; /* 투명도 0으로 숨김 */
-    transform: scaleY(0); /* Y축으로 축소된 상태로 시작 */
-    transform-origin: top; /* 위쪽을 기준으로 확장 */
-    transition:
-            transform 0.3s ease-in-out,
-            opacity 0.3s ease-in-out; /* 부드러운 애니메이션 */
-    z-index: 100; /* 다른 요소 위에 표시 */
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    background-color: #003366;
+    border-radius: 5px;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    z-index: 100;
 }
 
-/* 서브메뉴 활성화 */
-.sidebar ul li.active {
-    margin-bottom: 100px; /* 서브메뉴 높이만큼 아래 여백 추가 */
-}
-
+/* 서브메뉴 활성화 (.active) (공통) */
 .sidebar ul li.active .sub-menu {
-    height: auto; /* 내용에 맞게 자동 높이 */
-    opacity: 1; /* 완전히 보이도록 설정 */
-    transform: scaleY(1); /* Y축으로 확장 */
+    opacity: 1;
 }
 
-/* 서브메뉴 항목 스타일 */
+/* 서브메뉴 항목 스타일 (공통) */
 .sidebar ul li .sub-menu li {
-    padding: 10px 15px; /* 텍스트 상하 간격 */
-    margin: 0; /* 항목 간 간격 제거 */
+    padding: 10px 15px;
+    margin: 0;
 }
 
-/* 서브메뉴 항목 텍스트 */
+/* 서브메뉴 링크 (공통) */
 .sidebar ul li .sub-menu li a {
-    text-decoration: none; /* 밑줄 제거 */
-    color: #fff; /* 텍스트 색상 */
-    font-size: 14px; /* 텍스트 크기 */
-    display: block; /* 블록 요소로 설정 */
-    padding: 0; /* 텍스트 내부 여백 제거 */
+    text-decoration: none;
+    color: #fff;
+    font-size: 14px;
+    display: block;
+    text-align: left;
+    white-space: nowrap; /* 한 줄로 표시 (자동 줄바꿈 방지) */
 }
 
-/* 서브메뉴 항목 호버 효과 */
+/* 서브 메뉴 항목 호버 효과 (공통) */
 .sidebar ul li .sub-menu li a:hover {
-    text-decoration: none; /* 호버 시 밑줄 표시 */
+    background-color: transparent;
+    color: #007bff;
 }
 
-/* toggle 버튼 스타일 */
+/* toggle 버튼 (공통) */
 .toggle-btn {
     font-size: 24px;
     color: #fff;
     background: none;
     border: none;
     position: absolute;
-    top: 15px; /* 햄버거 메뉴 상단 위치 */
+    top: 15px;
     left: 22px;
     cursor: pointer;
-    z-index: 102; /* 알림 아이콘보다 위에 표시 */
+    z-index: 102;
 }
 
-.toggle-btn:hover,
-.toggle-btn:focus {
-    background-color: rgba(255, 255, 255, 0.1); /* 호버 및 포커스 시 배경색 변경 */
-    border-radius: 50%; /* 호버 시 원형 배경 적용 */
+/* 컨테이너 기본 상태 */
+.container {
+    margin-left: 0;               /* 초기 값 */
+    transition: margin-left 0.3s ease; /* 0.3초 동안 margin-left 변경 시 부드럽게 */
 }
 
-/* 사이드바가 열렸을 때 헤더와 메인 콘텐츠 이동 */
+/* 사이드바가 열렸을 때 헤더/컨테이너 이동 (공통) */
 .sidebar.open ~ .header {
-    left: 200px; /* 헤더의 left 속성 변경 */
+    left: 250px;
 }
 
 .sidebar.open ~ .container {
-    margin-left: 200px; /* 메인 콘텐츠의 margin-left 변경 */
+    margin-left: 200px;
+    transition: margin-left 0.3s ease; /* 컨테이너 부드럽게 이동 */
 }
 
-/* 링크의 기본 색상 설정 */
+/* 링크 기본 색상 (공통) */
 .sidebar a {
-    color: #fff; /* 흰색 */
+    color: #fff;
     text-decoration: none;
 }
 
-/* 방문한 링크의 색상을 기본 링크와 동일하게 설정 */
 .sidebar a:visited {
-    color: #fff; /* 흰색 */
+    color: #fff;
 }
 
-/* 호버 시 스타일 */
 .sidebar a:hover {
-    color: #007bff; /* 파란색 또는 원하는 색상 */
-    text-decoration: none; /* 밑줄 추가 (선택 사항) */
+    color: #007bff;
 }
 
-/* 활성화된 링크의 스타일 (선택 사항) */
 .sidebar a.active {
-    color: #f0ad4e; /* 활성화된 링크의 색상 (원하는 색상으로 변경 가능) */
+    color: #f0ad4e;
 }
 
-/* 홈 버튼 스타일 */
-.sidebar .menu-link {
-    display: flex;
-    align-items: center; /* 아이콘과 텍스트 수직 정렬 */
-    gap: 15px; /* 아이콘과 텍스트 간격 */
-    text-decoration: none; /* 링크 밑줄 제거 */
-    color: #fff; /* 텍스트 색상 */
+/* ---------------------------------------- */
+/* 메인 사이드바 전용 스타일 (오버라이드)   */
+/* ---------------------------------------- */
+#sidebarMain ul li .sub-menu li a,
+.sidebar-main ul li .sub-menu li a {
+    padding: 5px 43px;
 }
 
-/* 텍스트 스타일 */
-.sidebar .text {
-    font-size: 16px;
-}
-
-/* 호버 및 포커스 효과 */
-.sidebar ul li:hover {
-    background-color: #004080;
+/* ---------------------------------------- */
+/* 관리자 사이드바 전용 스타일 (오버라이드) */
+/* ---------------------------------------- */
+#sidebarAdmin ul li .sub-menu li a,
+.sidebar-admin ul li .sub-menu li a {
+    padding: 5px 43px;
 }

@@ -1,0 +1,80 @@
+<!-- sidebar2.html (관리자) -->
+<div th:fragment="sidebar" class="sidebar sidebar-admin" id="sidebarAdmin">
+  <button id="toggleBtn" class="toggle-btn" aria-label="사이드바 토글">☰</button>
+  <ul>
+    <!-- 홈 메뉴 -->
+    <li class="menu-item">
+      <a href="/" class="menu-link">
+        <i class="fas fa-home menu-icon" aria-hidden="true" tabindex="0" role="button" aria-label="홈"></i>
+        <span class="text">홈</span>
+      </a>
+    </li>
+
+    <!-- 알림 메뉴 -->
+    <li class="menu-item">
+      <a href="#" class="menu-link" aria-label="알림">
+        <i class="fas fa-bell menu-icon" aria-hidden="true" tabindex="0" role="button" aria-label="알림"></i>
+        <span class="text">알림 전송</span>
+      </a>
+      <ul class="sub-menu">
+        <li><a href="/index2.html">광주광역시 범죄현황</a></li>
+        <li><a href="/region/gwang.html">광산구</a></li>
+        <li><a href="/region/buk.html">북구</a></li>
+        <li><a href="/region/seo.html">서구</a></li>
+        <li><a href="/region/dong.html">동구</a></li>
+        <li><a href="/region/nam.html">남구</a></li>
+      </ul>
+    </li>
+
+    <!-- CCTV 메뉴 -->
+    <li class="menu-item">
+      <a href="#" class="menu-link" aria-label="CCTV">
+        <i class="fas fa-video menu-icon" aria-hidden="true" tabindex="0" role="button" aria-label="CCTV"></i>
+        <span class="text">CCTV</span>
+      </a>
+      <ul class="sub-menu">
+        <li><a href="/cctv/gwang">광산구</a></li>
+        <li><a href="/cctv/buk">북구</a></li>
+        <li><a href="/cctv/seo">서구</a></li>
+        <li><a href="/cctv/dong">동구</a></li>
+        <li><a href="/cctv/nam">남구</a></li>
+      </ul>
+    </li>
+
+    <!-- 관리 메뉴 (새로 추가) -->
+    <li class="menu-item">
+      <a href="#" class="menu-link" aria-label="관리">
+        <i class="fas fa-tools menu-icon" aria-hidden="true" tabindex="0" role="button" aria-label="관리"></i>
+        <span class="text">예측모델 관리</span>
+      </a>
+      <ul class="sub-menu">
+        <li><a href="/이상행동탐지.html">이상행동 탐지</a></li>
+        <li><a href="/통계.html">통계</a></li>
+      </ul>
+    </li>
+
+    <!-- 게시판 메뉴 -->
+    <li class="menu-item">
+      <a href="#" class="menu-link" aria-label="게시판">
+        <i class="fas fa-clipboard menu-icon" aria-hidden="true" tabindex="0" role="button" aria-label="게시판"></i>
+        <span class="text">게시판 관리</span>
+      </a>
+      <ul class="sub-menu">
+        <li><a href="/board/list">게시판1</a></li>
+        <li><a href="/board/list">게시판2</a></li>
+      </ul>
+    </li>
+
+    <!-- 공지사항 메뉴 -->
+    <li class="menu-item">
+      <a href="#" class="menu-link" aria-label="공지사항">
+        <i class="fas fa-exclamation-circle menu-icon" aria-hidden="true" tabindex="0" role="button" aria-label="공지사항"></i>
+        <span class="text">공지사항 관리</span>
+      </a>
+      <ul class="sub-menu">
+        <li><a th:href="@{/notice_board/boards}">공지사항1</a></li>
+        <li><a th:href="@{/notice_board/boards}">공지사항2</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>

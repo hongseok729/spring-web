@@ -1,122 +1,117 @@
-// 모달 관련 요소 가져오기
 const modal = document.getElementById("supportModal");
 const span = document.getElementsByClassName("close")[0];
 const stationNameInput = document.getElementById("stationName");
 const supportForm = document.getElementById("supportForm");
 const photoInput = document.getElementById("photo");
 const fileList = document.getElementById("fileList");
-const fileCount = document.getElementById("fileCount");
+const fileLabelText = document.getElementById("fileLabelText");
+const fileSelectButton = document.getElementById("fileSelectButton"); // "파일 선택" 버튼
 
-// 선택된 파일 목록을 저장할 배열
+// 선택된 파일 목록 저장
 let selectedFiles = [];
 
 // 관서 클릭 시 모달 열기
 function stationClick(stationName) {
     if (stationNameInput) {
-        stationNameInput.value = stationName; // 관서명 입력
-        console.log(`관서명 설정: ${stationName}`); // 디버깅 메시지 추가
-    } else {
-        console.error("stationNameInput 요소를 찾을 수 없습니다."); // 디버깅용 오류 메시지
+        stationNameInput.value = stationName;
     }
-    modal.style.display = "block"; // 모달 표시
+    modal.style.display = "block";
 }
 
-// 닫기 버튼 클릭 시 모달 닫기 및 폼 초기화
+// 닫기 버튼 클릭 시 모달 닫기
 span.onclick = function () {
     closeModal();
-}
-
-// 모달 외부 클릭 시 닫기 및 폼 초기화
-window.onclick = function (event) {
-    if (event.target == modal) {
-        closeModal();
-    }
-}
+};
 
 // 모달 닫기 함수
 function closeModal() {
     modal.style.display = "none";
-    supportForm.reset(); // 모달 닫을 때 폼 초기화
-    selectedFiles = []; // 선택된 파일 초기화
-    renderFileList(); // 파일 리스트 초기화
+    supportForm.reset();
+    selectedFiles = [];
+    renderFileList();
+    fileLabelText.textContent = "선택된 파일 없음"; // 파일 텍스트 초기화
 }
+
+// "파일 선택" 버튼 클릭 시 파일 입력 트리거
+fileSelectButton.addEventListener("click", () => {
+    photoInput.click(); // 숨겨진 파일 입력 요소 클릭
+});
 
 // 파일 입력 변경 시 처리
 photoInput.addEventListener("change", function () {
-    for (let i = 0; i < photoInput.files.length; i++) {
-        const file = photoInput.files[i];
-        // 이미 선택된 파일인지 확인
+    for (const file of photoInput.files) {
         if (!selectedFiles.some(f => f.name === file.name && f.size === file.size && f.lastModified === file.lastModified)) {
             selectedFiles.push(file);
         }
     }
+
+    // 파일 선택 텍스트 업데이트
+    if (selectedFiles.length === 0) {
+        fileLabelText.textContent = "선택된 파일 없음";
+    } else {
+        fileLabelText.textContent = `${selectedFiles.length}개의 파일 선택됨`;
+    }
+
     renderFileList();
-    // 폼의 파일 입력 필드를 초기화하여 동일한 파일을 다시 선택할 수 있도록 함
-    photoInput.value = ""; // 전체 폼을 초기화하지 않고 파일 입력만 초기화
+    photoInput.value = ""; // 파일 입력 필드 초기화
 });
 
-// 파일 리스트 렌더링 함수
+// 파일 목록 렌더링
 function renderFileList() {
-    fileList.innerHTML = ""; // 기존 리스트 초기화
+    fileList.innerHTML = "";
+    selectedFiles.forEach((file, index) => {
+        const li = document.createElement("li");
 
-    if (selectedFiles.length === 0) {
-        fileCount.textContent = "선택된 파일 없음";
-    } else {
-        fileCount.textContent = `${selectedFiles.length}개의 파일이 선택되었습니다.`;
+        // 파일 이름 표시
+        const fileNameSpan = document.createElement("span");
+        fileNameSpan.className = "file-name";
+        fileNameSpan.textContent = file.name;
 
-        selectedFiles.forEach((file, index) => {
-            const li = document.createElement("li");
+        // 삭제 버튼 추가
+        const removeButton = document.createElement("button");
+        removeButton.className = "remove-file";
+        removeButton.innerHTML = "&times;";
+        removeButton.onclick = function () {
+            removeFile(index);
+        };
 
-            const fileNameSpan = document.createElement("span");
-            fileNameSpan.className = "file-name";
-            fileNameSpan.textContent = file.name;
-
-            const removeButton = document.createElement("button");
-            removeButton.className = "remove-file";
-            removeButton.innerHTML = "&times;";
-            removeButton.onclick = function () {
-                removeFile(index);
-            };
-
-            li.appendChild(fileNameSpan);
-            li.appendChild(removeButton);
-            fileList.appendChild(li);
-        });
-    }
+        li.appendChild(fileNameSpan);
+        li.appendChild(removeButton);
+        fileList.appendChild(li);
+    });
 }
 
 // 파일 제거 함수
 function removeFile(index) {
     selectedFiles.splice(index, 1);
+
+    // 파일 선택 텍스트 업데이트
+    if (selectedFiles.length === 0) {
+        fileLabelText.textContent = "선택된 파일 없음";
+    } else {
+        fileLabelText.textContent = `${selectedFiles.length}개의 파일 선택됨`;
+    }
+
     renderFileList();
 }
 
 // 폼 제출 처리
 supportForm.addEventListener("submit", function (event) {
-    event.preventDefault(); // 기본 제출 방지
+    event.preventDefault();
 
-    const message = document.getElementById("message").value.trim();
-    if (!message) {
-        alert("내용을 작성해주세요.");
-        return;
-    }
-
-    // 폼 데이터 생성
     const formData = new FormData();
     formData.append("stationName", stationNameInput.value);
-    formData.append("message", message);
+    formData.append("message", document.getElementById("message").value.trim());
 
-    // 선택된 파일이 있을 경우 추가
-    if (selectedFiles.length > 0) {
-        selectedFiles.forEach((file, index) => {
-            formData.append("photo", file);
-        });
-    }
+    // 선택된 파일 추가
+    selectedFiles.forEach(file => {
+        formData.append("photo", file);
+    });
 
-    // 서버로 폼 데이터 전송 (AJAX)
-    fetch('/submitSupport', { // 실제 제출 URL로 변경
-        method: 'POST',
-        body: formData
+    // 서버로 전송
+    fetch("/submitSupport", {
+        method: "POST",
+        body: formData,
     })
         .then(response => response.json())
         .then(data => {
@@ -128,7 +123,7 @@ supportForm.addEventListener("submit", function (event) {
             }
         })
         .catch(error => {
-            console.error('Error:', error);
+            console.error("Error:", error);
             alert("지원 요청 전송에 실패했습니다.");
         });
 });
