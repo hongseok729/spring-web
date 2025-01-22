@@ -1,18 +1,19 @@
 .footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
+    position: relative; /* 고정된 위치 제거 */
+    width: 100%;        /* 페이지 전체 너비 */
     text-align: center;
     background-color: #fff;
     color: black;
     padding: 10px 0;
-    z-index: 9999;
+    z-index: 1;         /* z-index 필요 시 유지 */
+    flex-shrink: 0; /* 푸터가 줄어들지 않도록 설정 */
 }
+
 .footer a {
     color: #000;
     text-decoration: none;
 }
+
 .footer a:hover {
     text-decoration: underline;
 }

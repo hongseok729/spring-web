@@ -3,7 +3,7 @@
 /* ---------------------------------------- */
 .sidebar {
     width: 80px;
-    height: 100vh;
+    height: 100%;
     background-color: #003366;
     color: #fff;
     position: fixed;
@@ -72,25 +72,6 @@
     min-height: 45px;
 }
 
-/* 아이콘 스타일 (공통) */
-.sidebar ul li i {
-    font-size: 24px;
-    z-index: 101;
-    pointer-events: auto;
-    border-radius: 50%;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    cursor: pointer;
-}
-
-.sidebar ul li i:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-.sidebar ul li i.active {
-    background-color: #007BFF;
-    color: #fff;
-}
-
 /* 텍스트 스타일 (공통) */
 .sidebar ul li .text {
     display: none;
@@ -109,7 +90,7 @@
     opacity: 0;
     background-color: #003366;
     border-radius: 5px;
-    transition: max-height 0.3s ease, opacity 0.3s ease;
+    transition: max-height 0.8s ease, opacity 0.8s ease;
     z-index: 100;
 }
 
@@ -137,18 +118,18 @@
 /* 서브 메뉴 항목 호버 효과 (공통) */
 .sidebar ul li .sub-menu li a:hover {
     background-color: transparent;
-    color: #007bff;
+    color: #ffe374;
 }
 
 /* toggle 버튼 (공통) */
 .toggle-btn {
-    font-size: 24px;
+    font-size: 32px;
     color: #fff;
     background: none;
     border: none;
     position: absolute;
-    top: 15px;
-    left: 22px;
+    top: 12px;
+    left: 21px;
     cursor: pointer;
     z-index: 102;
 }
@@ -156,7 +137,7 @@
 /* 컨테이너 기본 상태 */
 .container {
     margin-left: 0;               /* 초기 값 */
-    transition: margin-left 0.3s ease; /* 0.3초 동안 margin-left 변경 시 부드럽게 */
+    transition: margin-left 1s ease; /* 0.3초 동안 margin-left 변경 시 부드럽게 */
 }
 
 /* 사이드바가 열렸을 때 헤더/컨테이너 이동 (공통) */
@@ -165,8 +146,8 @@
 }
 
 .sidebar.open ~ .container {
-    margin-left: 200px;
-    transition: margin-left 0.3s ease; /* 컨테이너 부드럽게 이동 */
+    margin-left: 250px;
+    transition: margin-left 0.5s ease; /* 컨테이너 부드럽게 이동 */
 }
 
 /* 링크 기본 색상 (공통) */
@@ -175,16 +156,25 @@
     text-decoration: none;
 }
 
-.sidebar a:visited {
-    color: #fff;
-}
-
+/* 메인 메뉴 호버 글씨 */
 .sidebar a:hover {
-    color: #007bff;
+    color: #ffe374;
 }
 
-.sidebar a.active {
-    color: #f0ad4e;
+/* 메뉴 버튼 글씨 조정 */
+.menu-link {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* 활성화된 메뉴 호버 색상 유지 */
+.menu-item.active a.menu-link {
+    color: #ffe374;
+}
+
+/* 활성화된 서브 메뉴 호버 색상 유지 */
+.sidebar ul li.active .sub-menu li a.active {
+    color: #ffe374 !important;  /* active 상태로 유지 */
 }
 
 /* ---------------------------------------- */

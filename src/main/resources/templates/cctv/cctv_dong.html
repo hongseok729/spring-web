@@ -10,6 +10,7 @@
     <link rel="stylesheet" th:href="@{/css/header.css}">
     <link rel="stylesheet" th:href="@{/css/sidebar.css}">
     <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/scrollbar.css}">
     <link rel="stylesheet" th:href="@{/css/cctv_dashboard.css}">
     <!-- Font Awesome -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js" defer></script>
@@ -53,7 +54,8 @@
 <div th:replace="~{fragments/footer :: footer}"></div>
 
 <!-- JavaScript -->
-<script src="/js/sidebar.js"></script>
-<script src="/js/cctv_dashboard.js"></script>
+<script th:src="@{/js/cctv_dashboard.js}" defer></script>
+<script th:src="@{/js/sidebar.js}" defer></script>
+<script th:src="@{/js/scrollbar.js}" defer></script>
 </body>
 </html>

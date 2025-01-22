@@ -8,12 +8,13 @@
     <link rel="stylesheet" th:href="@{/css/header.css}">
     <link rel="stylesheet" th:href="@{/css/sidebar.css}">
     <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/scrollbar.css}">
     <link rel="stylesheet" th:href="@{/css/google_map.css}">
+
+    <!-- Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js" defer></script>
     <!-- Google Maps API -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBe8yGUEAzf3rrlE2PJ8zs68mYkwNLmlyE"></script>
-    <!-- Custom JavaScript -->
-    <script src="/js/google_map.js" defer></script>
-    <script src="/js/sidebar.js"></script>
 </head>
 
 <body>
@@ -47,6 +48,11 @@
 
 <!-- 푸터 -->
 <div th:replace="~{fragments/footer :: footer}"></div>
+
+<!-- JavaScript 추가 -->
+<script th:src="@{/js/google_map.js}" defer></script>
+<script th:src="@{/js/sidebar.js}" defer></script>
+<script th:src="@{/js/scrollbar.js}" defer></script>
 </body>
 
 </html>

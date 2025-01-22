@@ -1,4 +1,9 @@
 <!-- sidebar.html -->
+
+<!-- CSS 파일 참조 -->
+<link rel="stylesheet" th:href="@{/css/scroll.css}">
+
+<!-- sidebar.html -->
 <div th:fragment="sidebar" class="sidebar sidebar-main" id="sidebarMain">
     <button id="toggleBtn" class="toggle-btn" aria-label="사이드바 토글">☰</button>
     <ul>
@@ -11,13 +16,13 @@
         </li>
 
         <!-- 알림 메뉴 -->
-        <li class="menu-item">
+        <li class="menu-item" data-menu-id="alert">
             <a href="#" class="menu-link" aria-label="알림">
                 <i class="fas fa-bell notification-icon" aria-hidden="true" tabindex="0" role="button" aria-label="알림"></i>
                 <span class="text notification-text">알림</span>
             </a>
             <ul class="sub-menu">
-                <li><a href="/index2.html">광주광역시 범죄현황</a></li>
+                <li><a th:href="@{/index2.html}">광주광역시 범죄현황</a></li>
                 <li><a href="/region/gwang.html">광산구</a></li>
                 <li><a href="/region/buk.html">북구</a></li>
                 <li><a href="/region/seo.html">서구</a></li>
@@ -27,7 +32,7 @@
         </li>
 
         <!-- 게시판 메뉴 -->
-        <li class="menu-item">
+        <li class="menu-item" data-menu-id="board">
             <a href="#" class="menu-link" aria-label="게시판">
                 <i class="fas fa-clipboard" aria-hidden="true" tabindex="0" role="button" aria-label="게시판"></i>
                 <span class="text board-text">게시판</span>
@@ -39,7 +44,7 @@
         </li>
 
         <!-- 공지사항 메뉴 -->
-        <li class="menu-item">
+        <li class="menu-item" data-menu-id="notice">
             <a href="#" class="menu-link" aria-label="공지사항">
                 <i class="fas fa-exclamation-circle" aria-hidden="true" tabindex="0" role="button" aria-label="공지사항"></i>
                 <span class="text notice-text">공지사항</span>

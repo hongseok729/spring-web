@@ -1,7 +1,9 @@
 <div th:fragment="header" class="header" id="header">
     <!-- 로고와 텍스트 -->
     <span class="greeting">
-        <img th:src="@{/images/kt.png}" alt="KT 로고">
+        <a th:href="@{/}">
+            <img th:src="@{/images/kt.png}" alt="KT 로고">
+        </a>
         <span class="greeting-text">AI 전남 / 전북 24조 화이팅!</span>
     </span>
     <!-- 로그인 버튼 -->

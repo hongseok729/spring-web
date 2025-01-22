@@ -32,23 +32,29 @@
     margin-left: var(--greeting-margin-left); /* 전체 `.greeting`을 우측으로 이동 */
 }
 
+/* 이미지 원래 크기 복원 및 수평 중앙 정렬 */
 .greeting img {
-    width: 30px;
-    height: 34px;
-    object-fit: contain;
+    width: 30px;  /* 원래 크기 */
+    height: 34px; /* 원래 크기 */
+    object-fit: contain; /* 비율 유지 */
+    vertical-align: middle; /* 수평 중앙 정렬 */
 }
 
 .btn-outline-light {
     color: #fff;
-    border: 1px solid #fff;
     padding: 5px 10px;
     text-decoration: none;
     font-size: 16px;
-    border-radius: 5px;
     transition: background-color 0.3s, color 0.3s;
+    /* border: 1px solid #fff;
+    border-radius: 5px; */
 }
 
 .btn-outline-light:hover {
-    background-color: #fff;
-    color: #003366;
+    color: #ffe374;
+}
+
+a {
+    display: inline-block; /* a 태그의 기본 크기를 줄이기 위해 inline-block 사용 */
+    text-decoration: none; /* 링크 기본 밑줄 제거 */
 }
